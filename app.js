@@ -7,6 +7,8 @@ const uuid = require('uuid/v1');
 let num = 0;
 let max = 500;
 const sourceUrl = process.argv[2];
+const targetPath = `/tmp/${uuid()}.mp4`;
+const ws = fs.createWriteStream(targetPath);
 
 function fill(num, length) {
   if (length <= `${num}`.length) return;
@@ -35,13 +37,13 @@ function main() {
         main();
         return;
       }
-      const ws = res.pipe(fs.createWriteStream(`/tmp/${num}.mp4`));
-      ws.on('finish', () => {
+      const pipe = res.pipe(fs.createWriteStream(`/tmp/${num}.mp4`));
+      pipe.on('finish', () => {
         console.log(num, '完成');
         num += 1;
         main();
       });
-      ws.on('error', (error) => {
+      pipe.on('error', (error) => {
         console.error(`错误了,${error.message}`);
       });
     } catch (error) {
@@ -52,11 +54,9 @@ function main() {
 
 main();
 
-const ws = fs.createWriteStream(`/tmp/${uuid()}.mp4`);
-
 const concat = () => {
   if (num >= max) {
-    console.log('合并结束');
+    console.log(`合并结束,文件位置为 \n${targetPath}`);
     return process.exit(0);
   }
   const rs = fs.createReadStream(`/tmp/${num}.mp4`);
