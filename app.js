@@ -5,7 +5,7 @@ const http = require('http');
 const uuid = require('uuid/v1');
 
 let num = 0;
-let max = 500;
+let max = Infinity;
 const sourceUrl = process.argv[2];
 const targetPath = `/tmp/${uuid()}.mp4`;
 const ws = fs.createWriteStream(targetPath);
