@@ -54,10 +54,16 @@ function main() {
 
 main();
 
+ws.on('finish', () => {
+  console.log('任务完成，触发ws finish');
+  process.exit(0);
+});
+
 const concat = () => {
   if (num >= max) {
     console.log(`合并结束,文件位置为 \n${targetPath}`);
-    return process.exit(0);
+    // 完成任务以后需要手动关闭可写流，否则可能导致内存泄漏
+    return ws.end();
   }
   const rs = fs.createReadStream(`/tmp/${num}.mp4`);
   rs.pipe(ws, {end: false});
@@ -67,6 +73,9 @@ const concat = () => {
     concat();
   });
   rs.once('error', (error) => {
+    // 发生错误了需要手动关闭
+    rs.end();
+    ws.end();
     console.error(`合并错误了,${error.message}`);
   });
 };
