@@ -31,7 +31,7 @@ module.exports = class Video {
       try {
         if (res.statusCode !== 200) {
           console.log(`状态码为${res.statusCode}`);
-          this.max = this.num;
+          this.max = this.num - 1;
           this.num = 0;
           return this.concat();
         }
@@ -66,7 +66,6 @@ module.exports = class Video {
     return Array.from(new Array(length - `${num}`.length)).fill(0).join('') + num;
   }
   concat() {
-    console.log(this.num, this.max);
     if (this.num > this.max) {
       console.log(`合并结束,文件位置为 \n${this.targetPath}`);
       // 完成任务以后需要手动关闭可写流，否则可能导致内存泄漏
