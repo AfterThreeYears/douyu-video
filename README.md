@@ -7,7 +7,7 @@
 	<br>
 	<img width="700" src="./screenshot/demo.png">
 	<br>
-	<img width="700" src="./screenshot/url.png">
+	<img width="700" src="./screenshot/url.jpeg">
 	<br>
 	<img width="700" src="./screenshot/help.png">
 </p>
