@@ -3,11 +3,11 @@
 
 > 下载斗鱼视频 暂时不支持windows
 
-[![demo](./screenshot/demo.png)]
+![demo](./screenshot/demo.png)
 
-[![url](./screenshot/url.jpeg)]
+![url](./screenshot/url.jpeg)
 
-[![help](./screenshot/help.png)]
+![help](./screenshot/help.png)
 
 ## Install
 
