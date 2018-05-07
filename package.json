@@ -9,7 +9,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "shell",
+  "repository": {
+    "type" : "git", 
+    "url" : "https://github.com/AfterThreeYears/douyu-video"
+  },
   "license": "ISC",
   "dependencies": {
     "commander": "^2.15.1",

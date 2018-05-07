@@ -26,3 +26,8 @@ douyu-video -u 视频的url -f 文件名
 ```
 
 下载以后保存在/tmp目录下
+
+
+## other
+
+求个star
